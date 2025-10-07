@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement Settings")]
+
     public float moveSpeed = 5f;
     public float jumpForce = 7f;
     
-    [Header("Components")]
+
     private Rigidbody rb;
     private bool isGrounded = false;
     
@@ -43,16 +43,25 @@ public class PlayerController : MonoBehaviour
     
     void HandleMovement()
     {
-        // Get input from keyboard
-        float horizontal = Input.GetAxis("Horizontal"); // A/D or Left/Right arrows
-        float vertical = Input.GetAxis("Vertical");     // W/S or Up/Down arrows
+        // // Get input from keyboard
+        // float horizontal = Input.GetAxis("Horizontal"); // A/D or Left/Right arrows
+        // float vertical = Input.GetAxis("Vertical");     // W/S or Up/Down arrows
         
-        // Create movement vector
-        Vector3 movement = new Vector3(horizontal, 0f, vertical);
-        movement = movement.normalized * moveSpeed * Time.deltaTime;
+        // // Create movement vector
+        // Vector3 movement = new Vector3(horizontal, 0f, vertical);
+        // movement = movement.normalized * moveSpeed * Time.deltaTime;
         
-        // Apply movement
-        transform.Translate(movement, Space.World);
+        // // Apply movement
+        // transform.Translate(movement, Space.Self);
+    float horizontal = Input.GetAxisRaw("Horizontal"); 
+    float vertical = Input.GetAxisRaw("Vertical");
+
+    Vector3 movement = new Vector3(horizontal, 0f, vertical).normalized;
+
+    if (movement.magnitude > 0f)
+    {
+        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.Self);
+    }
     }
     
     void HandleJumping()
