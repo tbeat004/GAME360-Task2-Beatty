@@ -14,3 +14,5 @@ The singleton pattern is directly used by the gameplay by keeping track of centr
 - Objective: Collect as many coins as possible while shooting moving beans before the timer expires to earn a high score.
 
 ## Repository Stats
+- Total Commits: 13
+- Development Time: 6 Hours
