@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+
     public int maxHealth = 1;
     public int scoreOnDeath = 50;
 
+
     public float maxRange = 5f;      
-    public float moveSpeed = 2f;     
-    public float pauseTime = 0.5f;   
+    public float moveSpeed = 2f;    
+    public float pauseTime = 0.5f;  
 
     private int health;
     private Vector3 startPos;
+    private Vector3 strafeAxis;      
     private Vector3 targetPos;
-    private bool moving = false;
+    private bool moving;
 
     void Awake()
     {
@@ -22,31 +25,38 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
+
+        strafeAxis = transform.right;
+        strafeAxis.y = 0f;
+        if (strafeAxis.sqrMagnitude < 0.0001f) strafeAxis = Vector3.right; 
+        strafeAxis.Normalize();
+
         ChooseNewTarget();
     }
 
     void Update()
     {
-        if (moving)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+        if (!moving) return;
 
-            if (Vector3.Distance(transform.position, targetPos) < 0.01f)
-            {
-                moving = false;
-                Invoke(nameof(ChooseNewTarget), pauseTime);
-            }
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+
+        if ((transform.position - targetPos).sqrMagnitude <= 0.0025f) 
+        {
+            moving = false;
+            Invoke(nameof(ChooseNewTarget), pauseTime);
         }
     }
 
     void ChooseNewTarget()
     {
-        
-        float newX = Random.Range(-maxRange, maxRange);
-        targetPos = new Vector3(startPos.x + newX, startPos.y, startPos.z);
+        if (maxRange <= 0f) return;
 
+
+        float offset = Random.Range(-maxRange, maxRange);
+        targetPos = startPos + strafeAxis * offset;
         moving = true;
     }
+
 
     public void TakeDamage(int amount)
     {
@@ -68,5 +78,6 @@ public class EnemyController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
 }
 
