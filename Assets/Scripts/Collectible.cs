@@ -5,6 +5,8 @@ public class Collectible : MonoBehaviour
     [Header("Collectible Settings")]
     public int scoreValue = 10;
     public float rotationSpeed = 50f;
+
+    public CoinSpawner spawner;
     
     void Start()
     {
@@ -30,6 +32,7 @@ public class Collectible : MonoBehaviour
             {
                 // Add score to player through a game manager
                 GameManager.Instance?.AddScore(scoreValue);
+                spawner.SpawnCoin();
                 
                 // Log collection
                 Debug.Log("COLLECTED: " + gameObject.name + " for " + scoreValue + " points!");
