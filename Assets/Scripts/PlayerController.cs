@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded = false;
     
+
+    public GameObject bulletPrefab;   
+    public Transform firePoint;       
+    public float fireRate = 0.25f;
+
+    private float nextFire = 0f;
     
     // Called when script instance is being loaded
     void Awake()
@@ -39,6 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         HandleMovement();
         HandleJumping();
+        HandleShooting();
+
     }
     
     void HandleMovement()
@@ -73,6 +81,23 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player jumped!");
         }
     }
+
+    void HandleShooting()
+{
+    if (Input.GetMouseButton(0) && Time.time >= nextFire) // 0 = left click
+    {
+        nextFire = Time.time + fireRate;
+
+        // pick spawn point
+        Vector3 spawnPos = firePoint ? firePoint.position : transform.position + transform.forward * 1f;
+
+        // spawn bullet facing player’s forward
+        Instantiate(bulletPrefab, spawnPos, transform.rotation);
+
+        Debug.Log("Bullet fired!");
+    }
+}
+
     
     // Called when this collider/rigidbody has begun touching another
     void OnCollisionEnter(Collision collision)
