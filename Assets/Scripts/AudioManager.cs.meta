@@ -1,2 +1,16 @@
 fileFormatVersion: 2
 guid: 9e196b00bfbf20d409de6525b70d332e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - menuMusic: {instanceID: 0}
+  - gameplayMusic: {instanceID: 0}
+  - shootSFX: {fileID: 8300000, guid: 42d2a624a77fbe34bb10e5d5ef8201a7, type: 3}
+  - coinSFX: {fileID: 8300000, guid: ff6e376b2b54d33468ed418e38d974cf, type: 3}
+  - enemyHitSFX: {fileID: 8300000, guid: 001adeb1fc0f75b48bb81a074f7b81c3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

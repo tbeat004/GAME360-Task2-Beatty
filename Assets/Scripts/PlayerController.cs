@@ -84,22 +84,23 @@ public class PlayerController : MonoBehaviour
 
     void HandleShooting()
 {
-    if (Input.GetMouseButton(0) && Time.time >= nextFire) // 0 = left click
+    if (Input.GetMouseButton(0) && Time.time >= nextFire) 
     {
         nextFire = Time.time + fireRate;
 
         // pick spawn point
         Vector3 spawnPos = firePoint ? firePoint.position : transform.position + transform.forward * 1f;
 
-        // spawn bullet facing player’s forward
+        
         Instantiate(bulletPrefab, spawnPos, transform.rotation);
+        AudioManager.Instance?.PlaySFX(AudioManager.Instance.shootSFX);
 
         Debug.Log("Bullet fired!");
     }
 }
 
     
-    // Called when this collider/rigidbody has begun touching another
+   
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
@@ -109,7 +110,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    // Called when this collider/rigidbody has stopped touching another
+    
     void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
