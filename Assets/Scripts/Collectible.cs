@@ -28,8 +28,8 @@ public class Collectible : MonoBehaviour
             
             if (player != null)
             {
-                // Add score to player
-                player.AddScore(scoreValue);
+                // Add score to player through a game manager
+                GameManager.Instance?.AddScore(scoreValue);
                 
                 // Log collection
                 Debug.Log("COLLECTED: " + gameObject.name + " for " + scoreValue + " points!");

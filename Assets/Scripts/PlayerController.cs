@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded = false;
     
-    [Header("Game Stats")]
-    private int score = 0;
     
     // Called when script instance is being loaded
     void Awake()
@@ -33,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Called before the first frame update
     void Start()
     {
-        Debug.Log("PlayerController Start - Game beginning with score: " + score);
+
     }
     
     // Called once per frame
@@ -87,10 +85,4 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    // Public method to add score
-    public void AddScore(int points)
-    {
-        score += points;
-        Debug.Log("SCORE UPDATED: " + score);
-    }
 }
