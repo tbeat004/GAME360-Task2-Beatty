@@ -9,4 +9,5 @@ public static class GameEvents
     public const string onPlayerHealthChanged = "onPlayerHealthChanged";
     public const string onPowerUpCollected = "onPowerUpCollected";
     public const string onAchievementUnlocked = "onAchievementUnlocked";
+    public const string onTimerTicked = "onTimerTicked";
 }
