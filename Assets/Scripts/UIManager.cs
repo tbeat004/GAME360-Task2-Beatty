@@ -20,10 +20,11 @@ public class UIManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Unsubscribe to prevent memory leaks
+        // Unsubscribe to events
         EventManager.Instance.Unsubscribe(GameEvents.onScoreChanged, OnScoreChanged);
         EventManager.Instance.Unsubscribe(GameEvents.onLevelComplete, OnLevelComplete);
         EventManager.Instance.Unsubscribe(GameEvents.onAchievementUnlocked, OnAchievementUnlocked);
+        EventManager.Instance.Subscribe(GameEvents.onTimerTicked, OnTimerTicked);
     }
 
     private void OnScoreChanged(object data)
@@ -36,10 +37,9 @@ public class UIManager : MonoBehaviour
     private void OnTimerTicked(object data)
     {
         float timeRemaining = (float)data;
-        int minutes = Mathf.FloorToInt(timeRemaining / 60);
-        int seconds = Mathf.FloorToInt(timeRemaining % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        Debug.Log($"UIManager: Updated timer to {minutes:00}:{seconds:00}");
+        int seconds = Mathf.CeilToInt(timeRemaining);
+        timerText.text = "Time Left: " + seconds;
+        Debug.Log($"UIManager: Updated timer to {seconds} seconds");
     }
 
 
