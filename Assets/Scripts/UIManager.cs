@@ -6,7 +6,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject levelCompletePanel;
-    [SerializeField] private GameObject achievementPopup;
     [SerializeField] private TextMeshProUGUI achievementText;
 
     private void Start()
@@ -52,16 +51,17 @@ public class UIManager : MonoBehaviour
     private void OnAchievementUnlocked(object data)
     {
         string achievementName = (string)data;
+
+        achievementText.enabled = true;
         achievementText.text = "Achievement Unlocked: " + achievementName;
-        achievementPopup.SetActive(true);
         Debug.Log("UIManager: Showing achievement popup for " + achievementName);
-        
-        // Hide after 3 seconds
+
+        // Hide after 3 seconds 
         Invoke("HideAchievementPopup", 3f);
     }
 
     private void HideAchievementPopup()
     {
-        achievementPopup.SetActive(false);
+        achievementText.enabled = false;
     }
 }

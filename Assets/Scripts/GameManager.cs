@@ -25,10 +25,7 @@ public class GameManager : MonoBehaviour
 
     timeLeft -= Time.deltaTime;
     if (timeLeft < 0f) timeLeft = 0f;
-
-    if (timerText) 
-        timerText.text = "Time Left: " + Mathf.CeilToInt(timeLeft);
-
+    EventManager.Instance.TriggerEvent(GameEvents.onTimerTicked, timeLeft);
     if (timeLeft <= 0f)
         EndRound();
 }
