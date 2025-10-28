@@ -32,6 +32,7 @@ public class Collectible : MonoBehaviour
             {
                 // Add score to player through a game manager
                 GameManager.Instance?.AddScore(scoreValue);
+                EventManager.Instance.TriggerEvent(GameEvents.onCollectibleCollected);
 
                 spawner.SpawnCoin();
                 

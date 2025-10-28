@@ -67,6 +67,7 @@ public class EnemyController : MonoBehaviour
     private void Die()
     {
         GameManager.Instance?.AddScore(scoreOnDeath);
+        EventManager.Instance.TriggerEvent(GameEvents.onEnemyDefeated);
         Destroy(gameObject);
     }
 

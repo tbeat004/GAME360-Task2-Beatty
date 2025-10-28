@@ -101,6 +101,7 @@ public class PlayerController : MonoBehaviour
             Vector3 spawnPos = firePoint ? firePoint.position : transform.position + transform.forward * 1f;
 
             Instantiate(bulletPrefab, spawnPos, transform.rotation);
+            EventManager.Instance.TriggerEvent(GameEvents.onBulletShot);
 
             Debug.Log("Bullet fired!");
         }
