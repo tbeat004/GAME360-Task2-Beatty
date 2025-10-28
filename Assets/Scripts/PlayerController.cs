@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // State machine now handles calling the appropriate methods
-        // Remove manual calls - the state Execute() will call them
         // HandleMovement();
         // HandleJumping();
         // HandleShooting();
@@ -86,6 +85,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+    
             Debug.Log("Player jumped!");
         }
     }
@@ -105,12 +106,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Bullet fired!");
         }
     }
-    
-    // Public getter for isGrounded so states can check it
+
+    // Public getter for isGrounded
     public bool IsGrounded()
     {
         return isGrounded;
     }
+    
+
    
     void OnCollisionEnter(Collision collision)
     {
