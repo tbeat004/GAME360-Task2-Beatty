@@ -67,7 +67,6 @@ public class EnemyController : MonoBehaviour
     private void Die()
     {
         GameManager.Instance?.AddScore(scoreOnDeath);
-        AudioManager.Instance?.PlaySFX(AudioManager.Instance.enemyHitSFX);
         Destroy(gameObject);
     }
 

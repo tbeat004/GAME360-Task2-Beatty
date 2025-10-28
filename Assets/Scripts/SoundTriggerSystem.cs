@@ -35,19 +35,19 @@ public class SoundTriggerSystem : MonoBehaviour
     private void OnEnemyDefeated(object data)
     {
         Debug.Log("SoundTriggerSystem: Enemy defeated - triggering sound");
-        
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyHitSFX);
     }
 
     private void OnCollectibleCollected(object data)
     {
         Debug.Log("SoundTriggerSystem: Collectible collected - triggering sound");
-     
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.coinSFX);
     }
 
     private void OnAchievementUnlocked(object data)
     {
         Debug.Log("SoundTriggerSystem: Achievement unlocked - triggering sound");
-    
+
     }
 
     private void OnLevelComplete(object data)
@@ -71,6 +71,6 @@ public class SoundTriggerSystem : MonoBehaviour
     private void OnBulletShot(object data)
     {
         Debug.Log("SoundTriggerSystem: Bullet shot - triggering sound");
-      
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.shootSFX);
     }
 }
