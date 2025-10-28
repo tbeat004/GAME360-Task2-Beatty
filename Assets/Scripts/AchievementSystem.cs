@@ -74,6 +74,7 @@ public class AchievementSystem : MonoBehaviour
 
     private void UnlockAchievement(string achievementName)
     {
+        
         unlockedAchievements.Add(achievementName);
         Debug.Log($"AchievementSystem: Achievement Unlocked - {achievementName}!");
         
