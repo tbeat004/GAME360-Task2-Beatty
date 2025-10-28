@@ -1,7 +1,5 @@
 # Task 3: Complete Patterns Integration
 
-This repository evolves the Task 2 foundation by integrating additional architectural patterns (Observer and State Machine) to make the game more modular, testable, and maintainable. This README documents the high-level design changes introduced in Task 3 and gives contributors and players a quick guide to the new systems and gameplay.
-
 # Project Evolution
 
 - Task 2 focused on establishing core systems using the Singleton pattern (centralized managers) and implementing a basic playable loop.
@@ -75,8 +73,8 @@ Task 3 extends the codebase with two main patterns: Observer (Event) and State M
 
 ## Repository Statistics
 
-- Total Commits: 39
-- Task 3 Commits: 14
+- Total Commits: 40
+- Task 3 Commits: 17
 - Lines of Code: ~1000
 - Development Time: 13 hours
 
