@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         score = 0;
-        UpdateUI();
         timeLeft = roundTime;
         isRoundActive = true;
     }
@@ -55,14 +54,10 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
-        UpdateUI();
+        EventManager.Instance.TriggerEvent(GameEvents.onScoreChanged, score);
+
     }
 
-    private void UpdateUI()
-    {
-        if (scoreText != null)
-            scoreText.text = $"Score: {score}";
-    }
 
     private void EndRound()
     {

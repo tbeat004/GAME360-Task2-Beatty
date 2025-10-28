@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     private void OnScoreChanged(object data)
     {
         int score = (int)data;
-        scoreText.text = "Score: " + score;
+        scoreText.text = $"Score: {score}";
         Debug.Log("UIManager: Updated score to " + score);
     }
 
