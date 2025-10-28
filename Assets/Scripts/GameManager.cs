@@ -25,10 +25,7 @@ public class GameManager : MonoBehaviour
 
     timeLeft -= Time.deltaTime;
     if (timeLeft < 0f) timeLeft = 0f;
-
-    if (timerText) 
-        timerText.text = "Time Left: " + Mathf.CeilToInt(timeLeft);
-
+    EventManager.Instance.TriggerEvent(GameEvents.onTimerTicked, timeLeft);
     if (timeLeft <= 0f)
         EndRound();
 }
@@ -47,7 +44,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         score = 0;
-        UpdateUI();
         timeLeft = roundTime;
         isRoundActive = true;
     }
@@ -55,14 +51,10 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
-        UpdateUI();
+        EventManager.Instance.TriggerEvent(GameEvents.onScoreChanged, score);
+
     }
 
-    private void UpdateUI()
-    {
-        if (scoreText != null)
-            scoreText.text = $"Score: {score}";
-    }
 
     private void EndRound()
     {
