@@ -14,12 +14,13 @@ public class AttackingState : State
     public override void Enter()
     {
         Debug.Log("Entered Attacking State");
-        
+
         // Change color to Red for Attacking
         if (playerRenderer != null)
         {
             playerRenderer.material.color = Color.red;
         }
+        
     }
 
     public override void Execute()
