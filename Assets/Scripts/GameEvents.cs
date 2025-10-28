@@ -10,4 +10,6 @@ public static class GameEvents
     public const string onPowerUpCollected = "onPowerUpCollected";
     public const string onAchievementUnlocked = "onAchievementUnlocked";
     public const string onTimerTicked = "onTimerTicked";
+
+    public const string onBulletShot = "onBulletShot";
 }

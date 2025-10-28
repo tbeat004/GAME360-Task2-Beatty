@@ -20,6 +20,7 @@ public class AchievementSystem : MonoBehaviour
 
     private void OnDestroy()
     {
+        // Unsubscribe to events
         EventManager.Instance.Unsubscribe(GameEvents.onEnemyDefeated, OnEnemyDefeated);
         EventManager.Instance.Unsubscribe(GameEvents.onCollectibleCollected, OnCollectibleCollected);
         EventManager.Instance.Unsubscribe(GameEvents.onScoreChanged, OnScoreChanged);
