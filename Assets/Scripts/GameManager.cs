@@ -23,9 +23,14 @@ public class GameManager : MonoBehaviour
 {
     if (!isRoundActive) return;
 
+    float previousTime = Mathf.Ceil(timeLeft);
     timeLeft -= Time.deltaTime;
+    float currentTime = Mathf.Ceil(timeLeft);
     if (timeLeft < 0f) timeLeft = 0f;
-    EventManager.Instance.TriggerEvent(GameEvents.onTimerTicked, timeLeft);
+    if (previousTime != currentTime)
+        {
+            EventManager.Instance.TriggerEvent(GameEvents.onTimerTicked, timeLeft);
+        }
     if (timeLeft <= 0f)
         EndRound();
 }
